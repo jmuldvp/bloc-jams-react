@@ -4,17 +4,17 @@ import albumData from './../data/albums';
 class Album extends Component {
   constructor(props) {
     super(props);
-    // console.log(this.props.albums)
-    const album = albumData.find( album => {
-      return album.slug === this.props.match.params.slug
-    });
-    // console.log(this.props.match.params.slug)
+
+    const album = albumData.find( album =>
+      album.slug === this.props.match.params.slug
+    );
+
     this.state = {
       album: album || {},
     };
   }
   render() {
-    // console.log(this.state.album.title)
+
     return(
       <section className="album">
         {this.props.match.params.slug}
@@ -33,6 +33,14 @@ class Album extends Component {
             <col id="song-duration-column" />
           </colgroup>
           <tbody>
+            <section className="song-list">
+              {console.log(this.state.album.songs)}
+              {
+                this.state.album.songs.map( (song, index) =>
+                  <tr key={index}>{song.title}</tr>
+                )
+              }
+            </section>
           </tbody>
         </table>
       </section>
