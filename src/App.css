@@ -9,9 +9,25 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  position: relative;
+  padding: 0.5rem;
+  /* background-color: rgba(101,18,95,0.5); */
+  z-index: 1;
+  /* height: 150px; */
   padding: 20px;
   color: white;
+  /* font-size: 0.625rem; */
+  /* display: table-cell; */
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.App-header nav {
+  display: table-cell;
+
 }
 
 .App-title {
@@ -21,6 +37,27 @@
 .App-intro {
   font-size: large;
 }
+
+body .album {
+  font-family: 'Open Sans';
+  color: white;
+  min-height: 100%;
+  background-image: url(./assets/images/blurred_backgrounds/blur_bg_3.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  padding-bottom: 200px;
+ }
+
+.album-cover-art {
+  position: relative;
+  left: 20%;
+  margin-top: 1rem;
+  width: 60%;
+}
+
+
 
 #song-list {
   display: grid;

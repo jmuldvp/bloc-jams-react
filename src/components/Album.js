@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
+import '.././styles/album.css';
 
 class Album extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Album extends Component {
       currentSong: album.songs[0],
       currentTime: 0,
       duration: album.songs[0].duration,
-      volume: .7,
+      volume: .04,
       isPlaying: false
     };
 
@@ -118,7 +119,7 @@ class Album extends Component {
 
     return(
       <section className="album">
-        {this.props.match.params.slug}
+        {/*this.props.match.params.slug*/}
         <section id="album-info">
           <img id="album-cover-art" alt="" src={this.state.album.albumCover || ''} />
           <div className="album-details">
