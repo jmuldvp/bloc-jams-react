@@ -47,7 +47,7 @@ body .album {
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
  }
 
 .album-cover-art {
@@ -57,10 +57,75 @@ body .album {
   width: 60%;
 }
 
+td {
+  height: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.5) !important;
+}
 
+.song:hover .ion-play {
+  display: block !important;
+}
+
+.song.is-playing:hover .ion-play {
+  display: none !important;
+}
+
+.song.is-playing .ion-pause {
+  display: block !important;
+}
+
+.song.is-playing .song-number {
+  display: none !important;
+}
+
+.album-song-button {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(210, 40, 123);
+}
+
+.song-number {
+  width: 5%;
+  min-width: 30px;
+}
+
+.song-title {
+  width: 85%;
+}
+
+.song-duration {
+  width: 5%;
+}
+
+.album-song-button {
+  text-align: center;
+  font-size: 14px;
+  background-color: white;
+  color: rgb(210, 40, 123);
+  border-radius: 50% 50%;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+}
+
+/* .album-song-button span {
+  line-height: 28px;
+} */
+
+.song:hover .ion-play {
+  display: block;
+}
+
+.song:hover .song-number {
+  display: none;
+}
+
+#song-list .ion-play, #song-list .ion-pause {
+  display: none;
+}
 
 #song-list {
-  display: grid;
+  display: flex;
   justify-content: center;
 }
 

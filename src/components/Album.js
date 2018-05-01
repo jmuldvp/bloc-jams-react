@@ -17,7 +17,8 @@ class Album extends Component {
       currentTime: 0,
       duration: album.songs[0].duration,
       volume: .04,
-      isPlaying: false
+      isPlaying: false,
+      hover: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -32,10 +33,14 @@ class Album extends Component {
        },
        durationchange: e => {
          this.setState({ duration: this.audioElement.duration });
+       },
+       volumechange: e => {
+         this.setState({ volume: this.state.volume });
        }
      };
      this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
      this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+     this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
   }
 
   componentWillUnmount() {
@@ -57,6 +62,14 @@ class Album extends Component {
   setSong(song) {
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
+  }
+
+  isSongPaused(song) {
+    return song === this.state.currentSong && this.state.isPlaying === false;
+  }
+
+  isSongPlaying(song) {
+    return song === this.state.currentSong && this.state.isPlaying === true;
   }
 
   handleSongClick(song) {
@@ -128,6 +141,8 @@ class Album extends Component {
             <div id="release-info">{this.state.album.releaseInfo}</div>
           </div>
         </section>
+        <br />
+        <br />
         <table id="song-list">
           <colgroup>
             <col id="song-number-column" />
@@ -137,9 +152,12 @@ class Album extends Component {
           <tbody>
             {
               this.state.album.songs.map( (song, index) =>
-                <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
+                <tr className={`song
+                    ${this.isSongPlaying(song) ? 'is-playing' : ''}
+                    ${this.isSongPaused(song) ? 'is-paused' : ''}
+                  `} key={index} onClick={() => this.handleSongClick(song)} >
                   <td className="song-actions">
-                    <button>
+                    <button className="album-song-button">
                       <span className="song-number">{index + 1}</span>
                       <span className="ion-play"></span>
                       <span className="ion-pause"></span>
@@ -152,6 +170,8 @@ class Album extends Component {
             }
           </tbody>
         </table>
+        <br />
+        <br />
         <br />
         <PlayerBar
           isPlaying={this.state.isPlaying}
